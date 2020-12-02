@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Quiz
+{% endblock %}
+
+
+{% block body %}
+    {% include'topBar/topBar.html.twig' %}
+
+<style>
+.form-check-label
+{
+  margin-left: 15px;
+}
+
+
+#question_save
+{
+
+    margin-top: 12px;
+}
+
+</style>
+
+  <div class="container">
+    <div class="card mt-5">
+      <div class="card-header">
+        Gestion des question
+      </div>
+      <div class="card-body">
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+
+        <div id="exp_list"
+          data-prototype="{{ form_widget(form.reponses.vars.prototype)|e(
+            'html_attr'
+          ) }}">
+          {% for row in form.reponses %}
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                <strong>{{row.vars.value.id}}</strong>
+              </div>
+              <div class="panel-body">
+                {{ form_row(row) }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}

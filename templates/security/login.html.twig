@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+<link rel="stylesheet"
+      href="{{asset('css/login.css')}}" />
+    {% endblock %}
+
+{% block body %}
+  <section class="Form my-4 mx-5">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-5">
+          <img src="img/img-1.jpg" class="img-fluid" alt="" />
+        </div>
+        <div class="col-lg-7 p-5">
+          <img src="img/img-2.png" />
+          <!-- <h1 class="font-weight-bold py-3">Logo</h1> -->
+          <h4>
+            Signin into your account
+          </h4>
+          <form method="post">
+            {% if error %}
+              <div class="alert alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+              </div>
+            {% endif %}
+
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input type="text"
+                  class="form-control my-3 p-4"
+                  value="{{ last_username }}"
+                  name="username"
+                  id="inputUsername"
+                  placeholder="Username"  />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input  name="password" id="inputPassword" type="password"
+                  class="form-control my-3 p-4"
+                  placeholder="Your password" />
+              </div>
+            </div>
+                    <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+            <div class="form-row">
+              <div class="col-lg-7">
+                <button class="btn1 mt-3 mb-3">login</button>
+              </div>
+            </div>
+
+            <a href="#">Forgot password</a>
+            <p>
+              Don't have an account
+              <a href="#">Register here</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+

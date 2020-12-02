@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Question
+{% endblock %}
+
+
+{% block body %}
+    {% include'topBar/topBar.html.twig' %}
+
+
+
+<div class="container">
+ <div class="card mt-4">
+            <div class="card-header">
+                Liste des questions
+
+            </div>
+            <div class="card-body">
+                            <a href="{{ path('add_question') }}" 
+                            role="button" type="button" class="btn btn-primary mb-4">Ajouter une question</a>
+
+
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">title</th>
+                        <th scope="col">QCM</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for question  in questions %}
+
+                        <tr>
+
+                            <td>   {{ question.id }}</td>
+                            <td>{{ question.title }}</td>
+                            </td>
+                            <td>
+                                <a href
+                                ="{{ path ('registration_quiz', {'id':question.id}) }}">
+                                <i class="fas fa-edit mr-2" style="color: green;"></i></a>
+                                <a href="{{ path ('delete_question', {'id':question.id}) }}">
+                                <i class="fas fa-trash-alt mr-2" style="color: red;"></i></a>
+
+                            </td>
+
+
+                        </tr>
+
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+        <a href="{{path('test_qcm')}}" class="btn btn-success mt-5">Passer un quiz </a>
+
+</div>
+
+{% endblock %}

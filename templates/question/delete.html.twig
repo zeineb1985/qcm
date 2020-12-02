@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter question!{% endblock %}
+
+{% block body %}
+<style>
+#form_Supprimer
+{
+
+margin-top:12px;
+}
+</style>
+
+<div class="container">
+
+    <div class="card mt-5">
+      <div class="card-header">
+Supprimer Question      </div>
+      <div class="card-body">
+
+{{form_start(form)}}
+{{ form_widget(form.title, {'value' : question.title     }) }}
+
+{{form_end(form)}}
+
+
+</div>
+</div>
+</div>
+
+</div>
+{% endblock %}
